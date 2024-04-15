@@ -41,7 +41,7 @@ def main():
     print("Data saved to data.json")
 
     # Close the browser window
-    driver.quitg)
+    driver.quit
 
 if __name__ == "__main__":
     main()
