@@ -14,16 +14,16 @@ def main():
     driver.get("https://fxonline.riaenvia.net/External/Login.aspx")
 
     # Fill in the login form fields
-    username_field = driver.find_element_by_id("username")
+    username_field = driver.find_element_by_id("User Name")
     username_field.send_keys("your_username")
     
-    password_field = driver.find_element_by_id("password")
+    password_field = driver.find_element_by_id("Password")
     password_field.send_keys("your_password")
 
-    agent_field = driver.find_element_by_id("agent")
+    agent_field = driver.find_element_by_id("Agent")
     agent_field.send_keys("your_agent")
 
-    branch_field = driver.find_element_by_id("branch")
+    branch_field = driver.find_element_by_id("Branch")
     branch_field.send_keys("your_branch")
 
     # You might need to click the login button or submit the form here
@@ -32,10 +32,10 @@ def main():
 
     # Save data to JSON file
     data = {
-        "username": username_field.get_attribute("value"),
-        "password": password_field.get_attribute("value"),
-        "agent": agent_field.get_attribute("value"),
-        "branch": branch_field.get_attribute("value")
+        "User Name": username_field.get_attribute("value"),
+        "Password": password_field.get_attribute("value"),
+        "Agent": agent_field.get_attribute("value"),
+        "Branch": branch_field.get_attribute("value")
     }
     save_to_json(data, "data.json")
     print("Data saved to data.json")
