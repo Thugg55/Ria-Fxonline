@@ -9,7 +9,7 @@ def save_to_json(data, filename):
         json.dump(data, json_file, indent=4)
 
 def main():
-    # Initialize Selenium WebDriver (make sure to install appropriate driver for your browser)
+    # Initialize Selenium WebDriver
     driver = webdriver.Chrome()
     
     # Navigate to the login page
@@ -32,13 +32,13 @@ def main():
     login_button = driver.find_element_by_id("Login")
     login_button.click()
 
-    # Wait for the page to load after login (assuming there's some element indicating successful login)
+    # Wait for the page to load after login 
     try:
         WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, "some_element_after_login"))
+            EC.presence_of_element_located((By.ID, "Login Successful"))
         )
     except TimeoutException:
-        print("Login failed or page didn't load after login.")
+        print("Login failed")
         driver.quit()
         return
 
@@ -52,7 +52,7 @@ def main():
         "Branch": branch_field.get_attribute("value")
     }
     save_to_json(data, "data.json")
-    print("Data saved to data.json")
+    print("Saved to data.json")
 
     # Close the browser window
     driver.quit()
