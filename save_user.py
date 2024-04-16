@@ -49,11 +49,10 @@ def main():
         )
 
         # Extract data after login (if necessary)
-
         # Save data to JSON file
-        # Example:
+        
         data = {
-            "Username": username,
+            "User Name": username,
             "Password": password,
             "Agent": agent,
             "Branch": branch
