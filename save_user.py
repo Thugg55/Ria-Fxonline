@@ -7,17 +7,20 @@ from selenium.webdriver.support import expected_conditions as EC
 import json
 
 # Configure logging
-logging.basicConfig(filename='script.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='script.log', level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 def save_to_json(data, filename):
     with open(filename, 'w') as json_file:
         json.dump(data, json_file, indent=4)
 
+
 def main():
     try:
         # Initialize Selenium WebDriver for Microsoft Edge
         driver = webdriver.Edge(executable_path="path_to_msedgedriver.exe")
-        
+
         # Navigate to the login page
         driver.get("https://fxonline.riaenvia.net/External/Login.aspx")
 
@@ -26,10 +29,10 @@ def main():
         password = "your_password"
         agent = "your_agent"
         branch = "your_branch"
-        
+
         username_field = driver.find_element_by_id("Username")
         username_field.send_keys(username)
-        
+
         password_field = driver.find_element_by_id("Password")
         password_field.send_keys(password)
 
@@ -43,7 +46,7 @@ def main():
         login_button = driver.find_element_by_id("Login")
         login_button.click()
 
-        # Wait for the page to load after login (assuming there's some element indicating successful login)
+        # Wait for the page to load after login
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, "some_element_after_login"))
         )
@@ -51,9 +54,9 @@ def main():
         # Extract data after login (if necessary)
 
         # Save data to JSON file
-        # Example:
+
         data = {
-            "Username": username,
+            "User Name": username,
             "Password": password,
             "Agent": agent,
             "Branch": branch
@@ -72,6 +75,6 @@ def main():
         if 'driver' in locals():
             driver.quit()
 
+
 if __name__ == "__main__":
     main()
-
